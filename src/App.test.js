@@ -1,16 +1,26 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import {
+  render,
+  fireEvent,
+  cleanup
+} from '@testing-library/react';
 // the following line means it's testing the App.js file:
 import App from './App';
 
-it('should display the text "my name"', () => {
-  const { getByText } = render(<App />);
-  expect(getByText('my name')).toBeInTheDocument();
+// it('should display the text "My Name"', () => {
+//   const { getByText } = render(<FrontPage />);
+//   expect(getByText('My Name')).toBeInTheDocument();
+// })
+
+it ('captures clicks', done => {
+  function handleClick() {
+    done();
+  }
+  const { getByText } = render(
+    <button onClick={handleClick}>click to see Project 1</button>
+  );
+  const node = getByText("click to see Project 1");
+  fireEvent.click(node);
 })
 
-
-// test('renders learn react link', () => {
-//   const { getByText } = render(<App />);
-//   const linkElement = getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
+afterEach(cleanup);
