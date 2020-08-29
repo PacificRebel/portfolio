@@ -1,13 +1,56 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './App.css';
 
-class FrontPage extends React.Component {
-  render() {
-    return (
-      <button onClick={this.name}>click to see Project 1</button>
-    );
-  }
-}
-// ReactDOM.render(<FrontPage />, document.getElementById('root'));
-export default FrontPage;
+const App = () => {
+  return (
+    <div>
+      <Button
+        label={'Project 1'}
+        handleClick={() => console.log('Clicked button One') }
+        />
+      <Button
+        label={'Project 2'}
+        handleClick={() => console.log('Clicked button Two') }
+        />
+      <Button
+        label={'Project 3'}
+        handleClick={() => console.log('Clicked button Three') }/>
+    </div>
+  );
+};
+
+const Button = ({ label, handleClick }) => {
+  return (
+    <button type="button" onClick={handleClick}>
+    {label}
+    </button>
+  );
+};
+
+//   const handleClick = () => console.log('Clicked!');
+//
+//   return (
+//     <button type='button' onClick={handleClick}>
+//     click here for Project 1
+//     </button>
+//   )
+// }
+//
+
+//
+// class App extends React.Component {
+//   render() {
+//
+//     const handleClick = () => console.log('Clicked!');
+//
+//     return (
+//       <div>
+//         <button type="button" onClick={handleClick}>
+//         click here for Project 1
+//         </button>
+//       </div>
+//     );
+//   };
+// }
+//
+export default App;
